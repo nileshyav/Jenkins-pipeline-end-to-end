@@ -38,13 +38,13 @@ pipeline{
                 message "Select the Environment to deploy"
                 ok "Env Selected"
                 parameters{
-                    choice(name:"ChooseEnv", choices:['dockerhub'], description:'')
+                    choice(name:"ChooseEnv", choices:['dockerhub','ecr'], description:'')
                 }
             }
 
             when{
                 expression{
-                    ${ChooseEnv} == "dockerhub"
+                    params.ChooseEnv == "dockerhub"
                 }
             }
 
