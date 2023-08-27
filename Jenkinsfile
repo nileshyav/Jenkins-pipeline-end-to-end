@@ -46,10 +46,14 @@ pipeline{
                     // withDockerRegistry(credentialsId:'docker_cred',url:''){
                     // image.push('latest')
                     // }
-                    
-                    gv = load 'script.groovy'
+                    val = ${ChooseEnv}
+                    if (val == "dockerhub"){
+                        gv = load 'script.groovy'
                     dockerhub = gv.pushToDockerHub()
                     echo "Deploying to ${ChooseEnv}"
+                    }
+
+                    
                 }
             }
         }
