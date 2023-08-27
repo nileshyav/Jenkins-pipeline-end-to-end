@@ -34,17 +34,16 @@ pipeline{
         }
 
         stage("Push image to Repository"){
-            input{
-                message "Select the Environment to deploy"
-                ok "Env Selected"
-                parameters{
-                    choice(name:"ChooseEnv", choices:['dockerhub','ecr'], description:'')
-                }
-            }
-
-            
+            // input{
+            //     message "Select the Environment to deploy"
+            //     ok "Env Selected"
+            //     parameters{
+            //         choice(name:"ChooseEnv", choices:['dockerhub','ecr'], description:'')
+            //     }
+            // }
 
             steps{
+
                 script{
 
                     def userInput = input( message:"Select the Environment to deploy",
@@ -66,17 +65,9 @@ pipeline{
                     gv.pushToDockerHub()
                     echo "Deploying to ${ChooseEnv} "
                     }
+
+               }
+     }              
+           }                             
+                
                     
-                        
-                    
-                    }                    
-                }
-            }
-        }
-
-        
-
-
-    }
-        
-    
