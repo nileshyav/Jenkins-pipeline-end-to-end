@@ -6,6 +6,8 @@ pipeline{
         stage("init"){
             steps{
                 echo "its Working"
+                sh 'ls'
+                sh 'pwd'
             }
         }
     }
