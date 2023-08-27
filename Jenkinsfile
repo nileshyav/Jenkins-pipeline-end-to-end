@@ -6,10 +6,18 @@ def gv
 pipeline{
     agent any 
 
-
+    parameters{
+        booleanParam(name: 'execute_init', defaultValue: true, description: 'Is debug build')
+    }
     stages{
         stage("init"){
             steps{
+                when{
+                    expression{
+                        params.execute_init == true
+                    }
+                }
+
                 echo "its Working"
                 sh 'ls'
                 sh 'pwd'
