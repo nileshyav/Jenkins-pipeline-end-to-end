@@ -41,6 +41,13 @@ pipeline{
                     choice(name:"ChooseEnv", choices:['dockerhub'], description:'')
                 }
             }
+
+            when{
+                expression{
+                    ${ChooseEnv} == "dockerhub"
+                }
+            }
+
             steps{
                 script{
                     // withDockerRegistry(credentialsId:'docker_cred',url:''){
