@@ -34,7 +34,7 @@ pipeline{
         }
 
         stage("Push image to Repository"){
-            def userInput = input{
+            input{
                 message "Select the Environment to deploy"
                 ok "Env Selected"
                 parameters{
@@ -46,6 +46,9 @@ pipeline{
 
             steps{
                 script{
+
+                    def userInput = input( message:"Select the Environment to deploy", ok : "Done",parameters[choice(name:"ChooseEnv", choices:['dockerhub','ecr'], description:'')])
+
                     // withDockerRegistry(credentialsId:'docker_cred',url:''){
                     // image.push('latest')
                     // }
@@ -55,7 +58,7 @@ pipeline{
                     if (userInput == 'dockerhub'){
                         
                     gv.pushToDockerHub()
-                    echo "Deploying to ${ChooseEnv}"
+                    echo "Deploying to ${ChooseEnv} "
                     }
                     
                         
