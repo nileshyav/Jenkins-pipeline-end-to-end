@@ -13,7 +13,7 @@ pipeline{
         stage("Build Jar file"){
             when{
                     expression{
-                        params.Build_Jar_file
+                        params.Build_Jar_file == true
                     }
                 }
             steps{
