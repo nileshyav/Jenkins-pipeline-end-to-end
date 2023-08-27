@@ -19,7 +19,7 @@ pipeline{
         stage("Build DOcker Image"){
             steps{
                 script{
-                    def image = docker.build("nileshyav/java_ready_image")
+                     image = docker.build("nileshyav/java_ready_image")
                 }
             }
         }
