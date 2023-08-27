@@ -47,12 +47,18 @@ pipeline{
             steps{
                 script{
 
-                    def userInput = input( message:"Select the Environment to deploy", ok : "Done",parameters[choice(name:"ChooseEnv", choices:['dockerhub','ecr'], description:'')])
+                    def userInput = input( message:"Select the Environment to deploy",
+                    id: 'userInput',
+                     ok : "Done",
+                     parameters[
+                        choice(name:"ChooseEnv", choices:['dockerhub','ecr'],
+                      description:'')
+                      ])
 
                     // withDockerRegistry(credentialsId:'docker_cred',url:''){
                     // image.push('latest')
                     // }
-                    
+                    echo "User selected: ${userInput}
                     gv = load 'script.groovy'
 
                     if (userInput == 'dockerhub'){
