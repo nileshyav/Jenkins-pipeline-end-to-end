@@ -21,9 +21,7 @@ pipeline{
                 echo "its Working"
                 sh 'ls'
                 sh 'pwd'
-                sh 'mvn clean install'
-
-                sh 'mvn clean package'
+                
             }
         }
 
