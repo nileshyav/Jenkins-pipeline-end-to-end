@@ -11,12 +11,13 @@ pipeline{
     }
     stages{
         stage("init"){
-            steps{
-                when{
+            when{
                     expression{
                         params.execute_init == true
                     }
                 }
+            steps{
+                
 
                 echo "its Working"
                 sh 'ls'
