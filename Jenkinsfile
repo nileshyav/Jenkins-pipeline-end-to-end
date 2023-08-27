@@ -63,7 +63,7 @@ pipeline{
                     if (userInput == 'dockerhub'){
                         
                     gv.pushToDockerHub()
-                    echo "Deploying to ${ChooseEnv} "
+                    
                     }
 
                }
