@@ -7,7 +7,7 @@ pipeline{
     agent any 
 
     parameters{
-        booleanParam(name: 'Build_Jar_file', defaultValue: false, description: 'Is debug build')
+        booleanParam(name: 'Build_Jar_file', defaultValue: true, description: 'Is debug build')
     }
     stages{
         stage("Build Jar file"){
