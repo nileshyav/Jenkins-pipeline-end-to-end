@@ -57,7 +57,7 @@ pipeline{
                     // withDockerRegistry(credentialsId:'docker_cred',url:''){
                     // image.push('latest')
                     // }
-                    echo "User selected: ${userInput}
+                    echo "User selected: ${userInput}"
                     gv = load 'script.groovy'
 
                     if (userInput == 'dockerhub'){
