@@ -49,7 +49,7 @@ pipeline{
                     def userInput = input( message:"Select the Environment to deploy",
                     id: 'userInput',
                      ok : "Done",
-                     parameters[
+                     parameters:[
                         choice(name:"ChooseEnv", choices:['dockerhub','ecr'],
                       description:'')
                       ])
