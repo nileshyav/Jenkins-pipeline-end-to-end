@@ -7,21 +7,21 @@ pipeline{
     agent any 
 
     parameters{
-        booleanParam(name: 'execute_init', defaultValue: true, description: 'Is debug build')
+        booleanParam(name: 'Build_Jar_file', defaultValue: false, description: 'Is debug build')
     }
     stages{
-        stage("init"){
+        stage("Build Jar file"){
             when{
                     expression{
-                        params.execute_init == true
+                        params.Build_Jar_file
                     }
                 }
             steps{
                 
-
                 echo "its Working"
                 sh 'ls'
                 sh 'pwd'
+                mvn clean package
             }
         }
 
