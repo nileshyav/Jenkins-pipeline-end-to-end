@@ -2,7 +2,7 @@
 
 // build docker imageand send to dockerhub
 
-
+def gv
 pipeline{
     agent any 
 
@@ -27,9 +27,11 @@ pipeline{
         stage("Push image to dockerhub"){
             steps{
                 script{
-                    withDockerRegistry(credentialsId:'docker_cred',url:''){
-                image.push('latest')
-                    }
+                    // withDockerRegistry(credentialsId:'docker_cred',url:''){
+                    // image.push('latest')
+                    // }
+                    gv = load 'script.groovy'
+                    gv.buildImage()
                 }
             }
         }
