@@ -21,6 +21,8 @@ pipeline{
                 echo "its Working"
                 sh 'ls'
                 sh 'pwd'
+                sh 'mvn clean install'
+
                 sh 'mvn clean package'
             }
         }
@@ -33,14 +35,23 @@ pipeline{
             }
         }
 
-        stage("Push image to dockerhub"){
+        stage("Push image to Repository"){
+            input{
+                message "Select the Environment to deploy"
+                ok "Env Selected"
+                parameters{
+                    choice(name:"ChooseEnv", choices:['dockerhub'], description:'')
+                }
+            }
             steps{
                 script{
                     // withDockerRegistry(credentialsId:'docker_cred',url:''){
                     // image.push('latest')
                     // }
+                    
                     gv = load 'script.groovy'
-                    gv.buildImage()
+                    dockerhub = gv.pushToDockerHub()
+                    echo "Deploying to ${ChooseEnv}"
                 }
             }
         }
