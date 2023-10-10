@@ -71,8 +71,21 @@ pipeline{
            } 
 
         stage("updating menifest repo with new docker image"){
-                 
-            sh 'ls'
+             withCredentials([
+
+             ]){
+                sh '''   
+                echo 'im in updationg repo stage' 
+                ls
+                cd deployment
+                sed -i '' "s/v1/${BUILD_NUMBER}/g" deploy.yaml
+                cat deploy.yaml
+                git add deploy.yaml
+                git commit -m 'upated the deploy.yaml file
+                git remote -v
+                '''
+
+             }
 
         }                            
                 
