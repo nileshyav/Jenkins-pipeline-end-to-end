@@ -71,9 +71,9 @@ pipeline{
            } 
 
         stage("updating menifest repo with new docker image"){
-             withCredentials([
-
-             ]){
+             steps{
+                script{
+                    withCredentials([string(credentialsId: 'github_secret', variable: 'var_secret')]){
                 sh '''   
                 echo 'im in updationg repo stage' 
                 ls
@@ -85,6 +85,8 @@ pipeline{
                 git remote -v
                 '''
 
+             }
+                }
              }
 
         }                            
