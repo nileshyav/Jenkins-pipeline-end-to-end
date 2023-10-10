@@ -82,7 +82,7 @@ pipeline{
                 sed -i  "s/32/${BUILD_NUMBER}/g" deploy.yaml
                 cat deploy.yaml
                 git add deploy.yaml
-                git commit -m 'upated the deploy.yaml file
+                git commit -m 'upated the deploy.yaml file'
                 git remote -v
                 git push origin master
                 '''
