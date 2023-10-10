@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javaApp
+spec:
+  replicas: 1
+  
+  selector:
+    matchLabels:
+      app: javaApp
+  template:
+    metadata:
+      labels:
+        app: javaApp
+    spec:
+      containers:
+      - name: javaAppContainer
+        image: nileshyav/java_ready_image:latest32
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+         
