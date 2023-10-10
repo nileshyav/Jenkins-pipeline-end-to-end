@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: javaApp
+  name: javaapp
 spec:
   replicas: 1
   
   selector:
     matchLabels:
-      app: javaApp
+      app: javaapp
   template:
     metadata:
       labels:
-        app: javaApp
+        app: javaapp
     spec:
       containers:
-      - name: javaAppContainer
+      - name: javaappcontainer
         image: nileshyav/java_ready_image:latest32
         resources:
           limits:
