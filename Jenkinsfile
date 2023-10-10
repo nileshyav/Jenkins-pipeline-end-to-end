@@ -68,7 +68,13 @@ pipeline{
 
                }
      }              
-           }                             
+           } 
+
+        stage("updating menifest repo with new docker image"){
+                 
+            sh 'ls'
+
+        }                            
                 
                     
     }}
