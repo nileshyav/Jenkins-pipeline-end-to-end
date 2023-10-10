@@ -16,10 +16,6 @@ spec:
       containers:
       - name: javaappcontainer
         image: nileshyav/java_ready_image:latest32
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
         ports:
         - containerPort: 8080
          
