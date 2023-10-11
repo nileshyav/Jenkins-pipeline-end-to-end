@@ -83,7 +83,7 @@ pipeline{
                 ls
                 cd deployment
                 ls
-                sed -i  "s/33/${BUILD_NUMBER}/g" deploy.yaml
+                sed -i  "s/34/${BUILD_NUMBER}/g" deploy.yaml
                 cat deploy.yaml
                 git add deploy.yaml
                 
