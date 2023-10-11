@@ -1,7 +1,3 @@
-// task
-
-// build docker imageand send to dockerhub
-
 def gv
 pipeline{
     agent any 
@@ -71,20 +67,29 @@ pipeline{
            } 
 
         stage("updating menifest repo with new docker image"){
+             environment {
+            GIT_REPO_NAME = "Jenkins-pipeline-end-to-end"
+            GIT_USER_NAME = "nileshyav"
+        }
+            
+            
              steps{
                 script{
-                    withCredentials([string(credentialsId: 'github_secret', variable: 'var_secret')]){
+                    withCredentials([string(credentialsId: 'github_secret', variable: 'GITHUB_TOKEN')]){
                 sh '''   
-                echo 'im in updationg repo stage' 
+                git config user.email "nileshyaduvanshi@outlook.com"
+                git config user.name "nileshyav"
+                
                 ls
                 cd deployment
                 ls
                 sed -i  "s/32/${BUILD_NUMBER}/g" deploy.yaml
                 cat deploy.yaml
                 git add deploy.yaml
+                
                 git commit -m 'upated the deploy.yaml file'
                 git remote -v
-                git push origin master
+               git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:master
                 '''
 
              }
