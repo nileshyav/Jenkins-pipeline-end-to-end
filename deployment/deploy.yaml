@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: javaappcontainer
-        image: nileshyav/java_ready_image:latest32
+        image: nileshyav/java_ready_image:latest20
         ports:
         - containerPort: 8080
          
