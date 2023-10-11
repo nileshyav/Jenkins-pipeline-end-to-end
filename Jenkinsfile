@@ -17,6 +17,7 @@ pipeline{
                 echo "its Working"
                 sh 'ls'
                 sh 'pwd'
+                sh 'mvn package'
                 
             }
         }
